@@ -4,8 +4,19 @@
       <div class="hero__logo">
         <img src="/logo.png" alt="logo" />
       </div>
-      <div class="hero__subtitle">全网最全的网盘搜索工具</div>
+      <div class="hero__subtitle">全网网盘资源一站式搜索</div>
     </header>
+
+    <!-- Google AdSense 广告位 -->
+    <div class="ad-container">
+      <ins
+        class="adsbygoogle"
+        style="display:block"
+        data-ad-client="ca-pub-7262388205743700"
+        data-ad-slot="6899161518"
+        data-ad-format="auto"
+        data-full-width-responsive="true"></ins>
+    </div>
 
     <SearchBox
       v-model="kw"
@@ -49,6 +60,20 @@
     </section>
 
     <section v-if="error" class="alert">{{ error }}</section>
+
+    <footer class="footer">
+      <p class="footer__text">
+        基于
+        <a
+          href="https://github.com/alantang1977/panhub"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer__link"
+          >PanHub 开源项目</a
+        >
+        构建
+      </p>
+    </footer>
   </div>
 </template>
 
@@ -68,17 +93,17 @@ const apiBase = (config.public?.apiBase as string) || "/api";
 const siteUrl = (config.public?.siteUrl as string) || "";
 
 useSeoMeta({
-  title: "PanHub - 全网最全的网盘搜索",
+  title: "反斗网盘搜索 - 全网最全的网盘搜索",
   description:
     "聚合阿里云盘、夸克、百度网盘、115、迅雷等平台，实时检索各类分享链接与资源，免费、快速、无广告。",
-  ogTitle: "PanHub - 全网最全的网盘搜索",
+  ogTitle: "反斗网盘搜索 - 全网最全的网盘搜索",
   ogDescription:
     "聚合阿里云盘、夸克、百度网盘、115、迅雷等平台，实时检索各类分享链接与资源，免费、快速、无广告。",
   ogType: "website",
-  ogSiteName: "PanHub",
+  ogSiteName: "反斗网盘搜索",
   ogImage: siteUrl ? `${siteUrl}/og.svg` : "/og.svg",
   twitterCard: "summary_large_image",
-  twitterTitle: "PanHub - 全网最全的网盘搜索",
+  twitterTitle: "反斗网盘搜索 - 全网最全的网盘搜索",
   twitterDescription:
     "聚合阿里云盘、夸克、百度网盘、115、迅雷等平台，实时检索各类分享链接与资源，免费、快速、无广告。",
   twitterImage: siteUrl ? `${siteUrl}/og.svg` : "/og.svg",
@@ -90,7 +115,7 @@ useHead({
     {
       name: "keywords",
       content:
-        "网盘搜索, 阿里云盘搜索, 夸克网盘搜索, 百度网盘搜索, 115 网盘, 迅雷云盘, 资源搜索, 盘搜, PanHub",
+        "网盘搜索, 阿里云盘搜索, 夸克网盘搜索, 百度网盘搜索, 115 网盘, 迅雷云盘, 资源搜索, 盘搜, 反斗网盘搜索",
     },
   ],
   script: [
@@ -99,7 +124,7 @@ useHead({
       innerHTML: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "WebSite",
-        name: "PanHub",
+        name: "反斗网盘搜索",
         url: siteUrl || "",
         potentialAction: {
           "@type": "SearchAction",
@@ -164,7 +189,7 @@ const DEFAULT_SETTINGS: UserSettings = {
   pluginTimeoutMs: 5000,
 };
 const settings = ref<UserSettings>({ ...DEFAULT_SETTINGS });
-const LS_KEY = "panhub.settings";
+const LS_KEY = "fandou.settings";
 function loadSettings() {
   if (typeof window === "undefined") return;
   try {
@@ -613,6 +638,14 @@ async function onSearch() {
 
 onMounted(() => {
   loadSettings();
+  // 初始化 Google AdSense 广告
+  if (typeof window !== "undefined") {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (e) {
+      console.error("AdSense error:", e);
+    }
+  }
 });
 </script>
 
@@ -646,6 +679,12 @@ onMounted(() => {
 .hero__subtitle {
   color: #666;
   font-size: 14px;
+}
+
+.ad-container {
+  margin: 16px 0;
+  text-align: center;
+  min-height: 90px;
 }
 
 .search {
@@ -904,6 +943,28 @@ onMounted(() => {
   padding: 8px 10px;
   border-radius: 8px;
   margin-top: 12px;
+}
+
+.footer {
+  margin-top: 40px;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  text-align: center;
+}
+
+.footer__text {
+  margin: 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.footer__link {
+  color: #0a58ff;
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
 }
 
 /* 设置抽屉样式由子组件自带，这里保留通用工具条样式 */

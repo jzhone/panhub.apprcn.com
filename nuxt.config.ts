@@ -5,8 +5,8 @@ export default defineNuxtConfig({
   app: {
     head: {
       htmlAttrs: { lang: "zh-CN" },
-      title: "PanHub · 全网最全的网盘搜索",
-      titleTemplate: "%s · PanHub",
+      title: "反斗网盘搜索 · 全网最全的网盘搜索",
+      titleTemplate: "%s · 反斗网盘搜索",
       meta: [
         {
           name: "viewport",
@@ -16,16 +16,23 @@ export default defineNuxtConfig({
         {
           name: "description",
           content:
-            "PanHub：聚合阿里云盘、夸克、百度网盘、115、迅雷等平台的全网最全网盘搜索工具，实时检索分享资源，免费、快速、无广告。",
+            "反斗网盘搜索：聚合阿里云盘、夸克、百度网盘、115、迅雷等平台的全网最全网盘搜索工具，实时检索分享资源，免费、快速、无广告。",
         },
         {
           name: "keywords",
           content:
-            "网盘搜索, 阿里云盘, 夸克, 百度网盘, 115, 迅雷, 资源搜索, 盘搜, panhub, 网盘聚合搜索",
+            "网盘搜索, 阿里云盘, 夸克, 百度网盘, 115, 迅雷, 资源搜索, 盘搜, 反斗网盘搜索, 网盘聚合搜索",
         },
         { name: "theme-color", content: "#111111" },
         { property: "og:type", content: "website" },
-        { property: "og:site_name", content: "PanHub" },
+        { property: "og:site_name", content: "反斗网盘搜索" },
+      ],
+      script: [
+        {
+          src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7262388205743700",
+          async: true,
+          crossorigin: "anonymous",
+        },
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
     },
@@ -128,7 +135,7 @@ export default defineNuxtConfig({
     public: {
       apiBase: "/api",
       // 用于 sitemap、canonical、OG 等
-      siteUrl: "https://panhub.shenzjd.com",
+      siteUrl: "https://panhub.apprcn.com",
       // 向前端暴露默认频道清单，供 UI 勾选（不会影响服务端私有配置）
       tgDefaultChannels: [
         "tgsearchers3",
